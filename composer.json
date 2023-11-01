@@ -1,0 +1,18 @@
+{
+    "name": "sirtaf/whatsapp-web-clone-with-php-backend",
+    "description": "Cloning Whatsapp Web application using PHP and WebSocket",
+    "require": {
+        "web-token/jwt-framework": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sirtaf\\WhatsappWebCloneWithPhpBackend\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Risfat97",
+            "email": "tamsir97@gmail.com"
+        }
+    ]
+}
