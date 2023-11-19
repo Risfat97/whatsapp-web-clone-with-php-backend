@@ -2,7 +2,9 @@
     "name": "sirtaf/whatsapp-web-clone-with-php-backend",
     "description": "Cloning Whatsapp Web application using PHP and WebSocket",
     "require": {
-        "web-token/jwt-framework": "^3.2"
+        "web-token/jwt-framework": "^3.2",
+        "doctrine/migrations": "^3.6",
+        "symfony/dotenv": "^6.3"
     },
     "autoload": {
         "psr-4": {

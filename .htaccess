@@ -1,0 +1,6 @@
+RewriteEngine on
+
+
+RewriteRule ^adminlogin /admin-login.php [QSA,L]
+RewriteRule ^login /user-login.php [QSA,L]
+RewriteRule ^logout /user-logout.php [QSA,L]

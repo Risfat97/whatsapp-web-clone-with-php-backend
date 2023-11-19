@@ -1,17 +1,27 @@
 version: '3.8'
 
 services:
-  php-httpd:
-    image: php:8.2-apache
-    container_name: whatsapp_webserver
+  webserver:
+    container_name: whatsapp_webserver_c
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USER_ID: ${USER_ID:-0}
+        GROUP_ID: ${GROUP_ID:-0}
+    env_file:
+      - ./.env
     ports:
       - '8080:80'
     volumes:
       - "./:/var/www/html"
+    user: ${DOCKER_UID:-1000:1000}
+    depends_on:
+      - database
   
   database:
     image: mysql
-    container_name: whatsapp_db
+    container_name: whatsapp_db_c
     volumes:
       - "mysql-volume:/var/lib/mysql"
     ports:
@@ -19,8 +29,10 @@ services:
     environment:
       TZ: "Europe/Paris"
       MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-whatsapp_db}
       MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_DATABASE: "whatsapp_db"
+      MYSQL_USER: 'app'
+      MYSQL_PASSWORD: 'root'
 
   phpmyadmin:
     image: phpmyadmin
